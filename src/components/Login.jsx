@@ -10,6 +10,7 @@ const Formulario = () => {
   const [variantAlerta, setVariantAlerta] = useState("secondary");
   const [btnOculto, setBtnOculto] = useState(true);
   const [alertaVisible, setAlertaVisible] = useState(false);
+  const credenciales = { usuario: "user@credenciales.cl", clave: "admin" };
 
   useEffect(() => {
     setAlertaVisible(false);
@@ -19,7 +20,8 @@ const Formulario = () => {
   }, [correo, clave]);
 
   const validarCredenciales = (correo, clave) => {
-    correo.trim() === "user@credenciales.cl" && clave.trim() === "admin"
+    correo.trim() === credenciales.usuario &&
+    clave.trim() === credenciales.clave
       ? (setMsgAlerta("Datos correctos, sesión iniciada."),
         setVariantAlerta("success"),
         setAlertaVisible(true))
@@ -63,8 +65,6 @@ const Formulario = () => {
         <Alert variant={variantAlerta} show={alertaVisible}>
           {msgAlerta}
         </Alert>
-        <p>{correo}</p>
-        <p>{clave}</p>
       </Form>
     </>
   );
