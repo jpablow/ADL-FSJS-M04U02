@@ -21,7 +21,7 @@ function App() {
           flexDirection: "column",
           justifyContent: "space-evenly",
         }}
-        className="w-50"
+        className="w-75"
       >
         <Formulario setResAlerta={setResAlerta} />
         <Alerta resAlerta={resAlerta} />

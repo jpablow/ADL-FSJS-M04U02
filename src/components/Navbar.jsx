@@ -6,7 +6,7 @@ const Barra = () => {
     <Navbar bg="primary" variant="dark">
       <Container>
         <Navbar.Brand>
-          <strong>React</strong> - Estado de los Componenetes y Eventos
+          <strong>React</strong> - Estado de los Componentes y Eventos
         </Navbar.Brand>
       </Container>
     </Navbar>
