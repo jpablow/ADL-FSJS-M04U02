@@ -5,7 +5,7 @@ const Barra = () => {
   return (
     <Navbar bg="primary" variant="dark">
       <Container>
-        <Navbar.Brand style={{ whiteSpace: normal }}>
+        <Navbar.Brand className="text-wrap">
           <strong>React</strong> - Estado de los Componentes y Eventos
         </Navbar.Brand>
       </Container>
