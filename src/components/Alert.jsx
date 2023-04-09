@@ -1,9 +1,9 @@
 import Alert from "react-bootstrap/Alert";
 
-const Alerta = () => {
+const Alerta = ({ resAlerta }) => {
   return (
-    <Alert variant={variantAlerta} show={alertaVisible}>
-      {msgAlerta}
+    <Alert variant={resAlerta.variantAlerta} show={resAlerta.alertaVisible}>
+      {resAlerta.msgAlerta}
     </Alert>
   );
 };

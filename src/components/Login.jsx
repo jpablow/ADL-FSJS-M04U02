@@ -1,19 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import Alert from "react-bootstrap/Alert";
 
-const Formulario = () => {
+const Formulario = ({ setResAlerta }) => {
   const [correo, setCorreo] = useState("");
   const [clave, setClave] = useState("");
-  const [msgAlerta, setMsgAlerta] = useState("");
-  const [variantAlerta, setVariantAlerta] = useState("secondary");
   const [btnOculto, setBtnOculto] = useState(true);
-  const [alertaVisible, setAlertaVisible] = useState(false);
   const credenciales = { usuario: "user@credenciales.cl", clave: "admin" };
 
   useEffect(() => {
-    setAlertaVisible(false);
+    setResAlerta({ alertaVisible: false });
     correo.trim() === "" || clave.trim() === ""
       ? setBtnOculto(true)
       : setBtnOculto(false);
@@ -22,12 +18,16 @@ const Formulario = () => {
   const validarCredenciales = (correo, clave) => {
     correo.trim() === credenciales.usuario &&
     clave.trim() === credenciales.clave
-      ? (setMsgAlerta("Datos correctos, sesión iniciada."),
-        setVariantAlerta("success"),
-        setAlertaVisible(true))
-      : (setMsgAlerta("El usuario o clave son incorrectos, intenta nuevamente"),
-        setVariantAlerta("danger"),
-        setAlertaVisible(true));
+      ? setResAlerta({
+          msgAlerta: "Datos correctos, sesión iniciada.",
+          variantAlerta: "success",
+          alertaVisible: true,
+        })
+      : setResAlerta({
+          msgAlerta: "El usuario o clave son incorrectos, intenta nuevamente.",
+          variantAlerta: "danger",
+          alertaVisible: true,
+        });
   };
 
   return (
@@ -62,9 +62,6 @@ const Formulario = () => {
         <Button variant="primary" type="submit" disabled={btnOculto}>
           Iniciar Sesión
         </Button>
-        <Alert variant={variantAlerta} show={alertaVisible}>
-          {msgAlerta}
-        </Alert>
       </Form>
     </>
   );
