@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import Container from "react-bootstrap/esm/Container";
 
 const Formulario = ({ setResAlerta }) => {
   const [correo, setCorreo] = useState("");
@@ -32,7 +33,7 @@ const Formulario = ({ setResAlerta }) => {
 
   return (
     <>
-      <h1>Login</h1>
+      <h1 className="mt-5">Login</h1>
       <Form
         onSubmit={(e) => {
           e.preventDefault();
@@ -47,6 +48,7 @@ const Formulario = ({ setResAlerta }) => {
             placeholder="Ingresa tu correo electrónico"
             onChange={(e) => setCorreo(e.target.value)}
             value={correo}
+            autoComplete="off"
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicPassword">
