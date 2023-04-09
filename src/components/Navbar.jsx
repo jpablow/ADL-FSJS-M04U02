@@ -5,7 +5,7 @@ const Barra = () => {
   return (
     <Navbar bg="primary" variant="dark">
       <Container>
-        <Navbar.Brand>
+        <Navbar.Brand style={{ whiteSpace: wrap }}>
           <strong>React</strong> - Estado de los Componentes y Eventos
         </Navbar.Brand>
       </Container>
