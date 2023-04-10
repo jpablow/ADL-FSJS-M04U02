@@ -15,14 +15,7 @@ function App() {
   return (
     <>
       <Barra />
-      <Container
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-evenly",
-        }}
-        className="w-75 mt-3 bg-light border-light border rounded"
-      >
+      <Container className="w-75 mt-3 bg-light border-light border rounded">
         <Formulario setResAlerta={setResAlerta} />
         <Alerta resAlerta={resAlerta} />
       </Container>
