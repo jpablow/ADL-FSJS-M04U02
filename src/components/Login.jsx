@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import Container from "react-bootstrap/esm/Container";
 
 const Formulario = ({ setResAlerta }) => {
   const [correo, setCorreo] = useState("");
@@ -10,43 +9,46 @@ const Formulario = ({ setResAlerta }) => {
   const credenciales = { usuario: "user@credenciales.cl", clave: "admin" };
 
   useEffect(() => {
-    setResAlerta({ alertaVisible: false });
+    setResAlerta({ showAlerta: false });
     correo.trim() === "" || clave.trim() === ""
       ? setBtnOculto(true)
       : setBtnOculto(false);
   }, [correo, clave]);
 
-  const validarCredenciales = (correo, clave) => {
-    correo.trim() === credenciales.usuario &&
-    clave.trim() === credenciales.clave
+  const handleChange = (e) => {
+    e.target.name === "correo"
+      ? setCorreo(e.target.value)
+      : e.target.name === "clave"
+      ? setClave(e.target.value)
+      : null;
+  };
+
+  const handleSubmit = (e, correo, clave) => {
+    e.preventDefault();
+    correo.trim() === credenciales.usuario && clave === credenciales.clave
       ? setResAlerta({
           msgAlerta: "Datos correctos, sesión iniciada.",
           variantAlerta: "success",
-          alertaVisible: true,
+          showAlerta: true,
         })
       : setResAlerta({
           msgAlerta: "El usuario o clave son incorrectos, intenta nuevamente.",
           variantAlerta: "danger",
-          alertaVisible: true,
+          showAlerta: true,
         });
   };
 
   return (
     <>
-      <h1 className="mt-5">Login</h1>
-      <Form
-        onSubmit={(e) => {
-          e.preventDefault();
-          validarCredenciales(correo, clave);
-        }}
-      >
+      <h1 className="mt-2">Login</h1>
+      <Form onSubmit={(e) => handleSubmit(e, correo, clave)} className="my-3">
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Usuario</Form.Label>
           <Form.Control
             type="email"
             name="correo"
             placeholder="Ingresa tu correo electrónico"
-            onChange={(e) => setCorreo(e.target.value)}
+            onChange={(e) => handleChange(e)}
             value={correo}
             autoComplete="off"
           />
@@ -57,7 +59,7 @@ const Formulario = ({ setResAlerta }) => {
             type="password"
             name="clave"
             placeholder="Ingresa tu clave"
-            onChange={(e) => setClave(e.target.value)}
+            onChange={(e) => handleChange(e)}
             value={clave}
           />
         </Form.Group>

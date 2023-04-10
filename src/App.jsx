@@ -10,7 +10,7 @@ function App() {
   const [resAlerta, setResAlerta] = useState({
     msgAlerta: "",
     variantAlerta: "",
-    alertaVisible: false,
+    showAlerta: false,
   });
   return (
     <>
@@ -21,7 +21,7 @@ function App() {
           flexDirection: "column",
           justifyContent: "space-evenly",
         }}
-        className="w-75"
+        className="w-75 mt-3 bg-light"
       >
         <Formulario setResAlerta={setResAlerta} />
         <Alerta resAlerta={resAlerta} />
