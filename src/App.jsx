@@ -21,7 +21,7 @@ function App() {
           flexDirection: "column",
           justifyContent: "space-evenly",
         }}
-        className="w-75 mt-3 bg-light"
+        className="w-75 mt-3 bg-light border-light border rounded"
       >
         <Formulario setResAlerta={setResAlerta} />
         <Alerta resAlerta={resAlerta} />
