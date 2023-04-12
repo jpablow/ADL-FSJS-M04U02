@@ -23,7 +23,7 @@ const Formulario = ({ setResAlerta }) => {
       : null;
   };
 
-  const handleSubmit = (e, correo, clave) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     correo.trim() === credenciales.usuario && clave === credenciales.clave
       ? setResAlerta({
